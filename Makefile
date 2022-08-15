@@ -1,4 +1,4 @@
-SRCS	= main.c window.c
+SRCS	= main.c screen.c image.c
 
 CC	= cc
 FLAGS	= -I ./mlx -L ./mlx -lmlx -framework OpenGl -framework Appkit

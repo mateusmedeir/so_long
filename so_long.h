@@ -24,7 +24,7 @@ typedef struct	s_image {
 	int	endian;
 }				t_image;
 
-void    ft_window(t_window window, void *mlx);
-void ft_image(t_image image, void *mlx, char *path);
+void    ft_screen(t_screen *screen, void *mlx, int width, int height, char *title);
+void ft_image(t_image *image, void *mlx, char *path);
 
 #endif

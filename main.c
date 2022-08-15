@@ -8,10 +8,10 @@ int main(void)
 	t_size		size;
 
 	mlx = mlx_init();
-	ft_window(window, mlx);
-	ft_image(image, mlx, "image.xpm");
+	ft_screen(&screen, mlx, 1600, 900, "so_long");
+	ft_image(&image, mlx, "block.xpm");
 	size.x = 0;
 	size.y = 0;
-	max_put_image_to_window(mlx, window.ref, image.ref, size.x, size.y);
+	mlx_put_image_to_window(mlx, screen.ref, image.ref, size.x, size.y);
 	mlx_loop(mlx);
 }
