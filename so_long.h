@@ -10,12 +10,14 @@ typedef struct	s_size
 	int	y;
 }				t_size;
 
-typedef struct	s_screen {
+typedef struct	s_screen
+{
 	void	*ref;
 	t_size	size;
 }				t_screen;
 
-typedef struct	s_image {
+typedef struct	s_image
+{
 	void	*ref;
 	t_size	size;
 	char	*pixels;
@@ -24,7 +26,15 @@ typedef struct	s_image {
 	int	endian;
 }				t_image;
 
-void    ft_screen(t_screen *screen, void *mlx, int width, int height, char *title);
-void ft_image(t_image *image, void *mlx, char *path);
+typedef struct s_long
+{
+	void		*mlx;
+	s_image		image;
+	s_screen	screen;
+	s_size		location;
+}				t_long;
+
+t_screen	ft_screen(void *mlx, int width, int height, char *title);
+t_image		ft_image(void *mlx, char *path);
 
 #endif
