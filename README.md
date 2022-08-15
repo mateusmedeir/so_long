@@ -97,7 +97,7 @@ void	*mlx_xpm_file_to_image(void *mlx_pointer, char *relative_path, int *width, 
 ```
 
 * ``mlx_new_image``. Cria uma imagem de `width` x ``height`` pixels. Todos eles pretos por padrão.
-* ``mlx_xmp_file_to_image``. Cria um que contém a imagem `.xpm` found in ``relative_path`` e salva sua `width` e `height` em pixels para os ponteiros dados. Você só pode usar imagens no formato xpm. Então aqui está o conversor de png para xmp que usei: https://anyconv.com/png-to-xpm-converter/
+* ``mlx_xmp_file_to_image``. Cria uma imagem que contém `.xpm` encontrada em ``relative_path`` e salva sua `width` e `height` em pixels para os ponteiros dados. Você só pode usar imagens no formato xpm. Então aqui está o conversor de png para xmp que usei: https://anyconv.com/png-to-xpm-converter/
 
 Para manipular os pixels de uma imagem você primeiro precisa chamar `mlx_get_data_addr()`.
 
