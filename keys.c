@@ -9,13 +9,13 @@ int	ft_check_key(int key, void *param)
 	if (key == 53)
 		ft_close();
 	else if (key == 0)
-		so_long->location.x -= so_long->image.size.x;
+		so_long->character.location.x -= so_long->character.image.size.x;
 	else if (key == 2)
-		so_long->location.x += so_long->image.size.x;
+		so_long->character.location.x += so_long->character.image.size.x;
 	else if (key == 1)
-		so_long->location.y += so_long->image.size.y;
+		so_long->character.location.y += so_long->character.image.size.y;
 	else if (key == 13)
-		so_long->location.y -= so_long->image.size.y;
-	mlx_put_image_to_window(so_long->mlx, so_long->screen.ref, so_long->image.ref, so_long->location.x, so_long->location.y);
+		so_long->character.location.y -= so_long->character.image.size.y;
+	mlx_put_image_to_window(so_long->mlx, so_long->screen.ref, so_long->character.image.ref, so_long->character.location.x, so_long->character.location.y);
 	return (0);	
 }

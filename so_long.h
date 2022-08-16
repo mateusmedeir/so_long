@@ -2,6 +2,7 @@
 #define SO_LONG_H
 
 #include "mlx/mlx.h"
+#include "gnl/get_next_line.h"
 #include <stdlib.h>
 
 typedef struct	s_size
@@ -9,12 +10,6 @@ typedef struct	s_size
 	int	x;
 	int	y;
 }				t_size;
-
-typedef struct	s_screen
-{
-	void	*ref;
-	t_size	size;
-}				t_screen;
 
 typedef struct	s_image
 {
@@ -26,17 +21,30 @@ typedef struct	s_image
 	int	endian;
 }				t_image;
 
+typedef struct s_screen
+{
+	void		*ref;
+	t_size		size;
+}				t_screen;
+
+typedef struct	s_character
+{
+	t_image	image;
+	t_size	location;
+}				t_character;
+
 typedef struct s_long
 {
 	void		*mlx;
-	t_image		image;
-	t_screen	screen;
-	t_size		location;
+	t_screen 	screen;
+	t_character character;
+	t_size		map;
 }				t_long;
 
 int ft_close();
 t_screen	ft_screen(void *mlx, int width, int height, char *title);
 t_image		ft_image(void *mlx, char *path);
 int			ft_check_key(int key, void *param);
+void    ft_map(char *map);
 
 #endif
