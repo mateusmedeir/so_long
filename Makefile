@@ -1,4 +1,4 @@
-SRCS	= main.c screen.c image.c
+SRCS	= main.c screen.c image.c keys.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -11,16 +11,24 @@ C	= -c
 
 NAME	= so_long
 
-all:		$(NAME)
+MLX		= libmlx.a
+
+all:		$(MLX) $(LIBFT) $(NAME)
 
 .c.o:		$(SRCS)
-		$(CC) $(FLAGS1) $(C) $< $(O) $(<:.c=.o)
+			$(CC) $(FLAGS1) $(C) $< $(O) $(<:.c=.o)
 
 $(NAME):	$(OBJS)
-		$(CC) $(FLAGS1) $(FLAGS2) $(OBJS) $(O) $(NAME)
+			$(CC) $(FLAGS1) $(FLAGS2) $(OBJS) $(O) $(NAME)
+
+$(MLX):
+			make -C mlx
 
 clean:
-		$(RM) $(OBJS)
+			$(RM) $(OBJS)
 
 fclean:		clean
-		$(RM) $(NAME)
+			$(RM) $(NAME)
+			make clean -C mlx
+
+re:			fclean all

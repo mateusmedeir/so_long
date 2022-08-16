@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-int ft_close()
+int	ft_close()
 {
 	exit(EXIT_SUCCESS);
 }

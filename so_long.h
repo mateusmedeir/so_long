@@ -29,12 +29,14 @@ typedef struct	s_image
 typedef struct s_long
 {
 	void		*mlx;
-	s_image		image;
-	s_screen	screen;
-	s_size		location;
+	t_image		image;
+	t_screen	screen;
+	t_size		location;
 }				t_long;
 
+int ft_close();
 t_screen	ft_screen(void *mlx, int width, int height, char *title);
 t_image		ft_image(void *mlx, char *path);
+int			ft_check_key(int key, void *param);
 
 #endif
