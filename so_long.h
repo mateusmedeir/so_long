@@ -27,18 +27,18 @@ typedef struct s_screen
 	t_size		size;
 }				t_screen;
 
-typedef struct	s_character
+typedef struct	s_block
 {
 	t_image	image;
 	t_size	location;
-}				t_character;
+}				t_block;
 
 typedef struct s_long
 {
 	void		*mlx;
 	t_screen 	screen;
-	t_character character;
-	t_size		map;
+	t_block		character;
+	t_block		map;
 }				t_long;
 
 int ft_close();
