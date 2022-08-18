@@ -2,20 +2,20 @@
 
 int	ft_check_key(int key, void *param)
 {
-	t_long	*so_long;
+	t_game	*game;
 
-	so_long = param;
-	mlx_clear_window(so_long->mlx, so_long->screen.ref);
+	game = param;
+	mlx_clear_window(game->mlx, game->screen.ref);
 	if (key == 53)
 		ft_close();
 	else if (key == 0)
-		so_long->character.location.x -= so_long->character.image.size.x;
+		game->person.pos.x -= game->person.img.size.x;
 	else if (key == 2)
-		so_long->character.location.x += so_long->character.image.size.x;
+		game->person.pos.x += game->person.img.size.x;
 	else if (key == 1)
-		so_long->character.location.y += so_long->character.image.size.y;
+		game->person.pos.y += game->person.img.size.y;
 	else if (key == 13)
-		so_long->character.location.y -= so_long->character.image.size.y;
-	mlx_put_image_to_window(so_long->mlx, so_long->screen.ref, so_long->character.image.ref, so_long->character.location.x, so_long->character.location.y);
+		game->person.pos.y -= game->person.img.size.y;
+	mlx_put_image_to_window(game->mlx, game->screen.ref, game->person.img.ref, game->person.pos.x, game->person.pos.y);
 	return (0);	
 }

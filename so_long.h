@@ -29,23 +29,27 @@ typedef struct s_screen
 
 typedef struct	s_block
 {
-	t_image	image;
-	t_size	location;
+	t_image	img;
+	t_size	pos;
 }				t_block;
 
-typedef struct s_long
+typedef struct s_game
 {
 	void		*mlx;
 	t_screen 	screen;
-	t_block		character;
+	t_block		person;
 	t_block		map;
-}				t_long;
+}				t_game;
 
+//screen
 int		ft_close();
 t_screen	ft_screen(void *mlx, int width, int height, char *title);
+//image
 t_image		ft_image(void *mlx, char *path);
+//key
 int		ft_check_key(int key, void *param);
-void		ft_map(t_long *so_long, char *map);
-void		ft_map_block(t_long *so_long, char line);
+//map
+void		ft_map(t_game *game, char *map);
+void		ft_map_block(t_game *game, char line);
 
 #endif

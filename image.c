@@ -2,9 +2,9 @@
 
 t_image	ft_image(void *mlx, char *path)
 {
-	t_image	image;
+	t_image	img;
 
-	image.ref = mlx_xpm_file_to_image(mlx, path, &image.size.x, &image.size.y);
-	image.pixels = mlx_get_data_addr(image.ref, &image.bits_per_pixel, &image.line_size, &image.endian);
-	return (image);
+	img.ref = mlx_xpm_file_to_image(mlx, path, &img.size.x, &img.size.y);
+	img.pixels = mlx_get_data_addr(img.ref, &img.bits_per_pixel, &img.line_size, &img.endian);
+	return (img);
 }
