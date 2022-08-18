@@ -41,10 +41,11 @@ typedef struct s_long
 	t_block		map;
 }				t_long;
 
-int ft_close();
+int		ft_close();
 t_screen	ft_screen(void *mlx, int width, int height, char *title);
 t_image		ft_image(void *mlx, char *path);
-int			ft_check_key(int key, void *param);
-void    ft_map(char *map);
+int		ft_check_key(int key, void *param);
+void		ft_map(t_long *so_long, char *map);
+void		ft_map_block(t_long *so_long, char line);
 
 #endif

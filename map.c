@@ -2,31 +2,34 @@
 
 #include <fcntl.h>
 
-t_block	ft_map(t_long so_long, char *map)
+#include <stdio.h>
+
+void	ft_map(t_long *so_long, char *map)
 {
-	t_block	map_block;
-	t_size	position;
 	char	*line;
-	int		fd;
-	int		counter;
+	int	fd;
 
 	fd = open(map, O_RDONLY);
 	line = get_next_line(fd);
-	position.x = 0;
-	position.y = 0;
-	while (line[0])
+	so_long->screen.size.y = 0;
+	while (line)
 	{
-		position.y += 1;
-		counter = -1;
-		while (line[++counter])
-			ft_map_block(map_block, position, line);
+		so_long->screen.size.x = -1;
+		while (line[++so_long->screen.size.x])
+			ft_map_block(so_long, line[so_long->screen.size.x]);
 		line = get_next_line(fd);
+		so_long->screen.size.y += 1;
 	}
-	map.x = counter;
-	return (map);
+	so_long->screen.size.x *= so_long->character.image.size.x;
+	so_long->screen.size.y *= so_long->character.image.size.y;
 }
 
-void	ft_map_block(t_block map, t_size position, char *line)
+void	ft_map_block(t_long *so_long, char line)
 {
-	
+	printf(" %c", line);
+	if (line == 'P')
+	{
+		so_long->character.location.x = so_long->screen.size.x * so_long->character.image.size.x;
+		so_long->character.location.y = so_long->screen.size.y * so_long->character.image.size.y;
+	}
 }
