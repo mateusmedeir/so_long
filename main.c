@@ -2,19 +2,26 @@
 
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+void	so_long(char *map)
 {
-	t_game		game;
+	t_game          game;
 
 	game.mlx = mlx_init();
-	game.person.img = ft_image(game.mlx, "imgs/person.xpm");
-	printf("AAAA\n");
-	ft_map(&game, argv[1]);
-	printf("AAAA\n");
-	printf("X: %d\nY: %d\n", game.screen.size.x, game.screen.size.y);
-	game.screen = ft_screen(game.mlx, game.screen.size.x, game.screen.size.y, "so_long");
-	mlx_put_image_to_window(game.mlx, game.screen.ref, game.person.img.ref, game.person.pos.x, game.person.pos.y);
-	mlx_key_hook(game.screen.ref, ft_check_key, &game);
+	ft_images(&game);
+	ft_map(&game, map);
+	printf("Width: %d\nHeight: %d\n", game.screen.width, game.screen.height);
+	printf("X: %d\nY: %d\n", game.x, game.y);
+	ft_screen(game);
+	mlx_put_image_to_window(game.mlx, game.screen.ref, game.person.ref, game.person.x, game.person.y);
+	//mlx_key_hook(game.screen.ref, ft_check_key, &game);
 	mlx_loop(game.mlx);
-	return (argc);
+}
+
+int main(int argc, char *argv[])
+{
+	if (argc == 2)
+		so_long(argv[1]);
+	else
+		exit(EXIT_FAILURE);
+	return (0);
 }

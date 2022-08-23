@@ -5,51 +5,40 @@
 #include "gnl/get_next_line.h"
 #include <stdlib.h>
 
-typedef struct	s_size
-{
-	int	x;
-	int	y;
-}				t_size;
-
-typedef struct	s_image
-{
-	void	*ref;
-	t_size	size;
-	char	*pixels;
-	int	bits_per_pixel;
-	int	line_size;
-	int	endian;
-}				t_image;
-
 typedef struct s_screen
 {
-	void		*ref;
-	t_size		size;
+	void	*ref;
+	int	width;
+	int	height;
 }				t_screen;
 
-typedef struct	s_block
+typedef struct s_person
 {
-	t_image	img;
-	t_size	pos;
-}				t_block;
+	void	*ref;
+	int	x;
+	int	y;
+}				t_person;
 
 typedef struct s_game
 {
 	void		*mlx;
 	t_screen 	screen;
-	t_block		person;
-	t_block		map;
+	t_person	person;
+	void		*wall;
+	void		*floor;
+	int		x;
+	int		y;
 }				t_game;
 
 //screen
-int		ft_close();
-t_screen	ft_screen(void *mlx, int width, int height, char *title);
+int	ft_close();
+void	ft_screen(t_game game);
 //image
-t_image		ft_image(void *mlx, char *path);
+void	ft_images(t_game *game);
 //key
-int		ft_check_key(int key, void *param);
+int	ft_check_key(int key, void *param);
 //map
-void		ft_map(t_game *game, char *map);
-void		ft_map_block(t_game *game, char line);
+void	ft_map(t_game *game, char *map);
+void	ft_map_block(t_game *game, char line);
 
 #endif

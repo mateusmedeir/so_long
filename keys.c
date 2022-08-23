@@ -9,13 +9,13 @@ int	ft_check_key(int key, void *param)
 	if (key == 53)
 		ft_close();
 	else if (key == 0)
-		game->person.pos.x -= game->person.img.size.x;
+		game->person.x -= game->person.img.width;
 	else if (key == 2)
-		game->person.pos.x += game->person.img.size.x;
+		game->person.x += game->person.img.width;
 	else if (key == 1)
-		game->person.pos.y += game->person.img.size.y;
+		game->person.y += game->person.img.height;
 	else if (key == 13)
-		game->person.pos.y -= game->person.img.size.y;
-	mlx_put_image_to_window(game->mlx, game->screen.ref, game->person.img.ref, game->person.pos.x, game->person.pos.y);
+		game->person.y -= game->person.img.height;
+	mlx_put_image_to_window(game->mlx, game->screen.ref, game->person.img.ref, game->person.x, game->person.y);
 	return (0);	
 }
