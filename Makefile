@@ -1,13 +1,13 @@
 SRCS	= main.c screen.c image.c keys.c map.c
 
-SRCS_GNL	= gnl/get_next_line.c gnl/get_next_line_utils.c
+SRCS_GNL	= libraries/gnl/get_next_line.c libraries/gnl/get_next_line_utils.c
 
 OBJS		= $(SRCS:.c=.o)
 
 CC		= cc
 RM		= rm -f
 FLAGS1		= -Wall -Wextra -Werror
-FLAGS2		= -I ./mlx -L ./mlx -lmlx -L ./libft -lft -framework OpenGl -framework Appkit
+FLAGS2		= -I ./libraries/mlx -L ./libraries/mlx -lmlx -L ./libraries/libft -lft -framework OpenGl -framework Appkit
 O		= -o
 C		= -c
 
@@ -26,17 +26,17 @@ $(NAME):	$(OBJS)
 			$(CC) $(FLAGS1) $(FLAGS2) $(OBJS) $(SRCS_GNL) -D BUFFER_SIZE=42 $(O) $(NAME)
 
 $(MLX):
-			@make -C mlx
+			@make -C libraries/mlx
 $(LIBFT):
-			@make -C libft
+			@make -C libraries/libft
 
 clean:
 			$(RM) $(OBJS)
-			@make clean -C libft
+			@make clean -C libraries/libft
 
 fclean:		clean
 			$(RM) $(NAME)
-			@make clean -C mlx
-			@$(RM) libft/$(LIBFT)
+			@make clean -C libraries/mlx
+			@make fclean -C libraries/libft
 
 re:			fclean all

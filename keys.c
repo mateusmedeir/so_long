@@ -1,21 +1,43 @@
 #include "so_long.h"
 
-int	ft_check_key(int key, void *param)
+int	ft_key_move(t_game *game, int x, int y)
 {
-	t_game	*game;
+	if (game->map[y][x] == '1' || (game->map[y][x] == 'E' && game->coin.amount > 0))
+		return (0);
+	if (game->map[y][x] == 'C')
+		game->coin.amount--;
+	game->map[game->person.y][game->person.x] = '0';
+	game->map[y][x] = 'P';
+	game->person.x = x;
+	game->person.y = y;
+	return (1);
+}
 
-	game = param;
-	mlx_clear_window(game->mlx, game->screen.ref);
+int	ft_key_check(int key, t_game *game)
+{
 	if (key == 53)
 		ft_close();
 	else if (key == 0)
-		game->person.pos_x -= game->x;
+		return(ft_key_move(game, game->person.x - 1, game->person.y));
 	else if (key == 2)
-		game->person.pos_x += game->x;
-	else if (key == 1)
-		game->person.pos_y += game->y;
+		return(ft_key_move(game, game->person.x + 1, game->person.y));
 	else if (key == 13)
-		game->person.pos_y -= game->y;
-	mlx_put_image_to_window(game->mlx, game->screen.ref, game->person.ref, game->person.pos_x, game->person.pos_y);
+		return(ft_key_move(game, game->person.x, game->person.y - 1));
+	else if (key == 1)
+		return(ft_key_move(game, game->person.x, game->person.y + 1));
 	return (0);	
+}
+
+int	ft_key(int key, void *param)
+{
+	static int	counter;
+	t_game		*game;
+
+	game = param;
+	if (ft_key_check(key, game) == 1)
+	{
+		ft_printf("%d\n", ++counter);
+		ft_map(game);
+	}
+	return (0);
 }

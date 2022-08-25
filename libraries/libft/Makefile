@@ -2,9 +2,9 @@ SRCS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strl
 
 SRCS_BONUS	= ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
-OBJS		= ${SRCS:.c=.o}
+OBJS		= $(SRCS:.c=.o)
 
-OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
+OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 
 AR			= ar rc
 GCC			= gcc
@@ -15,23 +15,31 @@ FLAGS		= -Wall -Wextra -Werror -c
 
 NAME		= libft.a
 
-all:		${NAME}
+PRINTF		= ft_printf/libftprintf.a
 
-$(NAME):	${OBJS}
-			${AR} ${NAME} ${OBJS}
+all:		$(NAME)
 
-.c.o:		${SRCS}
-			${GCC} ${FLAGS} $< ${O} $(<:.c=.o)
+$(NAME):	$(PRINTF) $(OBJS)
+			@cp $(PRINTF) $(NAME)
+			$(AR) $(NAME) $(OBJS)
+
+$(PRINTF):
+		@make -C ft_printf
+
+.c.o:		$(SRCS)
+			$(CC) $(FLAGS) $< $(O) $(<:.c=.o)
 
 bonus:		all
-			${GCC} ${FLAGS} ${SRCS_BONUS}
-			${AR} ${NAME} ${OBJS_BONUS}
+			$(CC) $(FLAGS) $(SRCS_BONUS)
+			$(AR) $(NAME) $(OBJS_BONUS)
 
 clean:
-			${RM} ${OBJS} ${OBJS_BONUS}
+			$(RM) $(OBJS) $(OBJS_BONUS)
+			@make clean -C ft_printf
 
 fclean:		clean
-			${RM} ${NAME}
+			$(RM) $(NAME)
+			@make fclean -C ft_printf
 
 re:			fclean all
 

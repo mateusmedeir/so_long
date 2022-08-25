@@ -1,7 +1,5 @@
 #include "so_long.h"
 
-#include <fcntl.h>
-
 void	ft_map_check(t_game *game, char *map)
 {
 	char	*line;
@@ -27,29 +25,39 @@ void	ft_map_check(t_game *game, char *map)
 	game->screen.height *= game->y;
 }
 
+void	ft_map_block(t_game *game, int pos)
+{
+	int	counter;
+
+	counter = -1;
+	while (game->map[pos][++counter])
+	{
+		if (game->map[pos][counter] == 'P')
+		{
+			game->person.x = counter;
+			game->person.y = pos;
+			ft_put_image(game, game->person.ref, counter, pos);
+		}
+		else if (game->map[pos][counter] == '1')
+			ft_put_image(game, game->wall, counter, pos);
+		else if (game->map[pos][counter] == '0')
+			ft_put_image(game, game->floor, counter, pos);
+		else if (game->map[pos][counter] == 'C')
+		{
+			++game->coin.amount;
+			ft_put_image(game, game->coin.ref, counter, pos);
+		}
+		else if (game->map[pos][counter] == 'E')
+			ft_put_image(game, game->exit, counter, pos);
+	}
+}
+
 void	ft_map(t_game *game)
 {
-	int	x;
-	int	y;
+	int	pos;
 
-	y = -1;
-	while (game->map[++y])
-	{
-		x = -1;
-		while (game->map[y][++x])
-		{
-			if (game->map[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->screen.ref, game->wall, x * game->x, y * game->y);
-			else if (game->map[y][x] == '0')
-                                mlx_put_image_to_window(game->mlx, game->screen.ref, game->floor, x * game->x, y * game->y);
-			else if (game->map[y][x] == 'C')
-                                mlx_put_image_to_window(game->mlx, game->screen.ref, game->coin, x * game->x, y * game->y);
-			else if (game->map[y][x] == 'P')
-			{
-				game->person.pos_x = x * game->x;
-				game->person.pos_y = y * game->y;
-				mlx_put_image_to_window(game->mlx, game->screen.ref, game->person.ref, game->person.pos_x, game->person.pos_y);
-			}
-		}
-	}
+	pos = 0;
+	game->coin.amount = 0;
+	while (game->map[pos])
+		ft_map_block(game, pos++);
 }	

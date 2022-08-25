@@ -9,7 +9,7 @@ void	ft_so_long(char *map)
 	ft_map_check(&game, map);
 	ft_screen(&game);
 	ft_map(&game);
-	mlx_key_hook(game.screen.ref, ft_check_key, &game);
+	mlx_key_hook(game.screen.ref, ft_key, &game);
 	mlx_loop(game.mlx);
 }
 
