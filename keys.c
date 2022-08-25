@@ -6,6 +6,8 @@ int	ft_key_move(t_game *game, int x, int y)
 		return (0);
 	if (game->map[y][x] == 'C')
 		game->coin.amount--;
+	else if (game->map[y][x] == 'E')
+		return (2);
 	game->map[game->person.y][game->person.x] = '0';
 	game->map[y][x] = 'P';
 	game->person.x = x;
@@ -31,13 +33,21 @@ int	ft_key_check(int key, t_game *game)
 int	ft_key(int key, void *param)
 {
 	static int	counter;
+	int		check;
 	t_game		*game;
 
 	game = param;
-	if (ft_key_check(key, game) == 1)
+	check = ft_key_check(key, game);
+	if (check == 1)
 	{
 		ft_printf("%d\n", ++counter);
 		ft_map(game);
+	}
+	else if (check == 2)
+	{
+		ft_printf("%d\n", ++counter);
+		ft_printf("\nCongratulations!\n");
+		ft_close();
 	}
 	return (0);
 }

@@ -7,8 +7,8 @@ void	ft_images(t_game *game)
 	game->floor = mlx_xpm_file_to_image(game->mlx, "imgs/floor.xpm", &game->x, &game->y);
 	game->coin.ref = mlx_xpm_file_to_image(game->mlx, "imgs/coin.xpm", &game->x, &game->y);
 	game->exit = mlx_xpm_file_to_image(game->mlx, "imgs/exit.xpm", &game->x, &game->y);
-	game->x = 64;
-	game->y = 64;
+	game->x = 50;
+	game->y = 50;
 }
 
 void	ft_put_image(t_game *game, void *ref, int x, int y)
