@@ -16,8 +16,13 @@ void	ft_so_long(char *map)
 int	main(int argc, char *argv[])
 {
 	if (argc == 2)
-		ft_so_long(argv[1]);
+	{
+		if (ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".ber", 5) == 0)
+			ft_so_long(argv[1]);
+		else
+			ft_error("Wrong map format\n");
+	}
 	else
-		exit(EXIT_FAILURE);
+		ft_error("Wrong number of arguments\n");
 	return(0);
 }

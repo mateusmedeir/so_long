@@ -43,18 +43,15 @@ typedef struct s_game
 }				t_game;
 
 void	ft_so_long(char *map);
-//screen
 int	ft_close();
 void	ft_screen(t_game *game);
-//image
 void	ft_images(t_game *game);
 void    ft_put_image(t_game *game, void *ref, int x, int y);
-//key
 int	ft_key_move(t_game *game, int x, int y);
 int	ft_key_check(int key, t_game *game);
 int	ft_key(int key, void *param);
-//map
 void	ft_map_check(t_game *game, char *map);
 void	ft_map(t_game *game);
+void	ft_error(char *strerror);
 
 #endif
