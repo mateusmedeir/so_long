@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/30 09:32:04 by mmedeiro          #+#    #+#             */
+/*   Updated: 2022/08/30 11:25:03 by mmedeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	ft_key_move(t_game *game, int x, int y)
 {
-	if (game->map[y][x] == '1' || (game->map[y][x] == 'E' && game->coin.amount > 0))
+	if (game->map[y][x] == '1' || (game->map[y][x] == 'E'
+				&& game->coin.amount > 0))
 		return (0);
 	if (game->map[y][x] == 'C')
 		game->coin.amount--;
@@ -18,22 +31,22 @@ int	ft_key_move(t_game *game, int x, int y)
 int	ft_key_check(int key, t_game *game)
 {
 	if (key == 53)
-		ft_close();
+		ft_close(game);
 	else if (key == 0)
-		return(ft_key_move(game, game->person.x - 1, game->person.y));
+		return (ft_key_move(game, game->person.x - 1, game->person.y));
 	else if (key == 2)
-		return(ft_key_move(game, game->person.x + 1, game->person.y));
+		return (ft_key_move(game, game->person.x + 1, game->person.y));
 	else if (key == 13)
-		return(ft_key_move(game, game->person.x, game->person.y - 1));
+		return (ft_key_move(game, game->person.x, game->person.y - 1));
 	else if (key == 1)
-		return(ft_key_move(game, game->person.x, game->person.y + 1));
-	return (0);	
+		return (ft_key_move(game, game->person.x, game->person.y + 1));
+	return (0);
 }
 
 int	ft_key(int key, void *param)
 {
 	static int	counter;
-	int		check;
+	int			check;
 	t_game		*game;
 
 	game = param;
@@ -47,7 +60,7 @@ int	ft_key(int key, void *param)
 	{
 		ft_printf("%d\n", ++counter);
 		ft_printf("\nCongratulations!\n");
-		ft_close();
+		ft_close(game);
 	}
 	return (0);
 }

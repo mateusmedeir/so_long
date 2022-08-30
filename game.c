@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/30 09:25:06 by mmedeiro          #+#    #+#             */
+/*   Updated: 2022/08/30 11:33:00 by mmedeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_so_long(char *map)
@@ -20,9 +32,9 @@ int	main(int argc, char *argv[])
 		if (ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".ber", 5) == 0)
 			ft_so_long(argv[1]);
 		else
-			ft_error("Wrong map format\n");
+			ft_error(NULL, "Wrong map format\n");
 	}
 	else
-		ft_error("Wrong number of arguments\n");
-	return(0);
+		ft_error(NULL, "Wrong number of arguments\n");
+	return (0);
 }

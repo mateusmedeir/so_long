@@ -1,10 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
+/*   Updated: 2022/08/30 11:31:47 by mmedeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
+
+int ft_map_error(char *line, int pos)
+{
+	int	counter;
+
+	counter = -1;
+	while (line[++counter])
+	{
+   		if ((pos == 0 && line[counter] != '1') || ((counter == 0 ||
+				!line[counter + 1]) && line[counter] != '1'))
+        	return (1);
+	}
+	return (0);
+}
 
 void	ft_map_check(t_game *game, char *map)
 {
 	char	*line;
 	char	*tmp;
-	int	fd;
+	int		fd;
 
 	fd = open(map, O_RDONLY);
 	game->screen.height = 0;
@@ -14,6 +40,11 @@ void	ft_map_check(t_game *game, char *map)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
+		//if (ft_map_error(line, game->screen.height) > 0)
+		//{
+		//	free(line);
+		//	ft_error("Map is not closed\n");
+		//}
 		tmp = join_strings(tmp, line);
 		free(line);
 		game->screen.height++;
