@@ -12,48 +12,82 @@
 
 #include "so_long.h"
 
-int ft_map_error(char *line, int pos)
+int	ft_map_error(t_game *game, char *line, int pos)
 {
+	int	count;
+
+	count = 0;
+	while (line[count] && line[count] != '\n')
+	{
+		if ((pos == 0 && line[count] != '1') || ((line[count + 1] == '\n'
+					|| !line[count + 1] || count == 0) && line[count] != '1'))
+			return (0);
+		if (line[count] == 'P')
+		{
+			if (game->person.amount++ >= 1)
+				return (0);
+		}
+		else if (line[count] == 'E')
+		{
+			if (game->exit.amount++ >= 1)
+				return (0);
+		}
+		else if (line[count] == 'C')
+			game->coin.amount++;
+		else if (line[count] != '1' && line[count] != '0')
+			return (0);
+		count++;
+	}
+	return (count);
+}
+
+char	*ft_map_check_line(t_game *game)
+{
+	char	*line;
+	char	*tmp;
 	int	counter;
 
-	counter = -1;
-	while (line[++counter])
+	tmp = NULL;
+	while (1)
 	{
-   		if ((pos == 0 && line[counter] != '1') || ((counter == 0 ||
-				!line[counter + 1]) && line[counter] != '1'))
-        	return (1);
+		line = get_next_line(game->fd);
+		if (line == NULL)
+			break ;
+		counter = ft_map_error(game, line, game->screen.height);
+		if (counter == 0 || (game->screen.height > 0
+				&& counter != game->screen.width))
+		{
+			free(line);
+			free(tmp);
+			ft_error("Wrong map format");
+		}
+		tmp = join_strings(tmp, line);
+		free(line);
+		game->screen.width = counter;
+		game->screen.height++;
 	}
-	return (0);
+	return (tmp);
 }
 
 void	ft_map_check(t_game *game, char *map)
 {
-	char	*line;
 	char	*tmp;
-	int		fd;
 
-	fd = open(map, O_RDONLY);
+	game->fd = open(map, O_RDONLY);
 	game->screen.height = 0;
-	tmp = NULL;
-	while (1)
+	game->coin.amount = 0;
+	game->person.amount = 0;
+	game->exit.amount = 0;
+	tmp = ft_map_check_line(game);
+	close(game->fd);
+	if (game->screen.width <= game->screen.height || game->coin.amount == 0
+		|| game->person.amount == 0 || game->exit.amount == 0)
 	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		//if (ft_map_error(line, game->screen.height) > 0)
-		//{
-		//	free(line);
-		//	ft_error("Map is not closed\n");
-		//}
-		tmp = join_strings(tmp, line);
-		free(line);
-		game->screen.height++;
+		free(tmp);
+		ft_error("Wrong map format");
 	}
 	game->map = ft_split(tmp, '\n');
 	free(tmp);
-	game->screen.width = ft_strlen(*game->map);
-	game->screen.width *= game->x;
-	game->screen.height *= game->y;
 }
 
 void	ft_map_block(t_game *game, int pos)
@@ -74,12 +108,9 @@ void	ft_map_block(t_game *game, int pos)
 		else if (game->map[pos][counter] == '0')
 			ft_put_image(game, game->floor, counter, pos);
 		else if (game->map[pos][counter] == 'C')
-		{
-			++game->coin.amount;
 			ft_put_image(game, game->coin.ref, counter, pos);
-		}
 		else if (game->map[pos][counter] == 'E')
-			ft_put_image(game, game->exit, counter, pos);
+			ft_put_image(game, game->exit.ref, counter, pos);
 	}
 }
 
@@ -88,7 +119,6 @@ void	ft_map(t_game *game)
 	int	pos;
 
 	pos = 0;
-	game->coin.amount = 0;
 	while (game->map[pos])
 		ft_map_block(game, pos++);
 }	

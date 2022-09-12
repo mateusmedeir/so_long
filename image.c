@@ -22,7 +22,7 @@ void	ft_images(t_game *game)
 			"imgs/floor.xpm", &game->x, &game->y);
 	game->coin.ref = mlx_xpm_file_to_image(game->mlx,
 			"imgs/coin.xpm", &game->x, &game->y);
-	game->exit = mlx_xpm_file_to_image(game->mlx,
+	game->exit.ref = mlx_xpm_file_to_image(game->mlx,
 			"imgs/exit.xpm", &game->x, &game->y);
 	game->x = 50;
 	game->y = 50;

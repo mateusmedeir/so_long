@@ -31,7 +31,7 @@ int	ft_key_move(t_game *game, int x, int y)
 int	ft_key_check(int key, t_game *game)
 {
 	if (key == 53)
-		ft_close(game);
+		return (-1);
 	else if (key == 0)
 		return (ft_key_move(game, game->person.x - 1, game->person.y));
 	else if (key == 2)
@@ -51,6 +51,8 @@ int	ft_key(int key, void *param)
 
 	game = param;
 	check = ft_key_check(key, game);
+	if (check == -1)
+		ft_close(game);
 	if (check == 1)
 	{
 		ft_printf("%d\n", ++counter);

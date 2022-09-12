@@ -1,4 +1,4 @@
-SRCS	= game.c screen.c image.c keys.c map.c close.c
+SRCS	= game.c screen.c image.c keys.c map.c
 
 SRCS_GNL	= libraries/gnl/get_next_line.c libraries/gnl/get_next_line_utils.c
 

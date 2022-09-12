@@ -32,9 +32,9 @@ int	main(int argc, char *argv[])
 		if (ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".ber", 5) == 0)
 			ft_so_long(argv[1]);
 		else
-			ft_error(NULL, "Wrong map format\n");
+			ft_error("Wrong map format");
 	}
 	else
-		ft_error(NULL, "Wrong number of arguments\n");
+		ft_error("Wrong number of arguments");
 	return (0);
 }
