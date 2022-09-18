@@ -17,6 +17,7 @@ void	ft_so_long(char *map)
 	t_game		game;
 
 	game.mlx = mlx_init();
+	map++;
 	ft_images(&game);
 	ft_map_check(&game, map);
 	ft_screen(&game);

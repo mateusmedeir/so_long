@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mateus <mmedeiro@student.42.rio>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/18 09:27:58 by mateus            #+#    #+#             */
+/*   Updated: 2022/09/18 09:29:33 by mateus           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -15,7 +27,7 @@ typedef struct s_screen
 	int	height;
 }				t_screen;
 
-typedef struct	s_person
+typedef struct s_person
 {
 	void	*ref;
 	int	amount;
@@ -23,7 +35,7 @@ typedef struct	s_person
 	int	y;
 }				t_person;
 
-typedef struct	s_block
+typedef struct s_block
 {
 	void	*ref;
 	int	amount;
@@ -32,7 +44,7 @@ typedef struct	s_block
 typedef struct s_game
 {
 	void		*mlx;
-	t_screen 	screen;
+	t_screen	screen;
 	t_person	person;
 	void		*wall;
 	void		*floor;
@@ -50,7 +62,7 @@ void	ft_error(char *strerror);
 int	ft_close(t_game *game);
 void	ft_screen(t_game *game);
 void	ft_images(t_game *game);
-void    ft_put_image(t_game *game, void *ref, int x, int y);
+void	ft_put_image(t_game *game, void *ref, int x, int y);
 int	ft_key_move(t_game *game, int x, int y);
 int	ft_key_check(int key, t_game *game);
 int	ft_key(int key, void *param);
