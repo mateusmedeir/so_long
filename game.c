@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:06 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/08/30 11:33:00 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:06:47 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ft_so_long(char *map)
 	t_game		game;
 
 	game.mlx = mlx_init();
-	map++;
 	ft_images(&game);
 	ft_map_check(&game, map);
 	ft_screen(&game);

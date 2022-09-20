@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:32:04 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/08/30 11:25:03 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:21:53 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_key(int key, void *param)
 	else if (check == 2)
 	{
 		ft_printf("%d\n", ++counter);
-		ft_printf("\nCongratulations!\n");
+		ft_printf("Congratulations!\n");
 		ft_close(game);
 	}
 	return (0);
