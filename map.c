@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/21 11:33:42 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:41:15 by mmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ void	ft_map_check(t_game *game, char *map)
 	game->exit.amount = 0;
 	tmp = ft_map_check_line(game);
 	close(game->fd);
-	if (game->screen.width <= game->screen.height || game->coin.amount == 0
-		|| game->person.amount == 0 || game->exit.amount == 0)
+	if (!tmp)
+		ft_error("Invalid map");
+	if (game->coin.amount == 0 || game->person.amount == 0
+		|| game->exit.amount == 0)
 	{
 		free(tmp);
-		ft_error("Invalid map");
+		ft_error("Wrong number of elements in the map");
 	}
 	game->map = ft_split(tmp, '\n');
 	free(tmp);

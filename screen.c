@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:34:16 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/21 10:57:17 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/21 12:48:22 by mmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_free_map(t_game *game)
 
 void	ft_error(char *strerror)
 {
-	ft_putstr_fd("ERROR\n", 2);
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(strerror, 2);
 	ft_putstr_fd("\n", 2);
 	exit(EXIT_FAILURE);
