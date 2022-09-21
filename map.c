@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/08/30 11:31:47 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/21 11:33:42 by mmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_map_check_line(t_game *game)
 {
 	char	*line;
 	char	*tmp;
-	int	counter;
+	int		counter;
 
 	tmp = NULL;
 	while (1)
@@ -59,7 +59,7 @@ char	*ft_map_check_line(t_game *game)
 		{
 			free(line);
 			free(tmp);
-			ft_error("Wrong map format");
+			ft_error("Invalid map");
 		}
 		tmp = join_strings(tmp, line);
 		free(line);
@@ -84,7 +84,7 @@ void	ft_map_check(t_game *game, char *map)
 		|| game->person.amount == 0 || game->exit.amount == 0)
 	{
 		free(tmp);
-		ft_error("Wrong map format");
+		ft_error("Invalid map");
 	}
 	game->map = ft_split(tmp, '\n');
 	free(tmp);

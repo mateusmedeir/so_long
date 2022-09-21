@@ -41,7 +41,4 @@ fclean:		clean
 
 re:			fclean all
 
-valgrind:	re
-			@valgrind --leak-check=full --suppressions=val.log ./$(NAME) maps/map.ber
-
-.PHONY:		all clean fclean re valgrind
+.PHONY:		all clean fclean re
