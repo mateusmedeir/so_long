@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:34:16 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/21 12:48:22 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/22 10:55:47 by mmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	ft_error(char *strerror)
 int	ft_close(t_game *game)
 {
 	ft_free_map(game);
+	ft_putstr_fd("The game has been closed\n", 1);
 	exit(EXIT_SUCCESS);
 }
