@@ -1,4 +1,4 @@
-SRCS	= game.c screen.c image.c keys.c map.c
+SRCS	= game.c screen.c image.c keys.c map.c map_path.c
 
 SRCS_GNL	= libraries/gnl/get_next_line.c libraries/gnl/get_next_line_utils.c
 
@@ -41,4 +41,7 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+valgrind:	re
+			@valgrind --leak-check=full --suppressions=val.log ./$(NAME) maps/map.ber
+
+.PHONY:		all clean fclean re valgrind

@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/22 11:19:18 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/24 08:37:33 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_map_error(t_game *game, char *line, int pos)
 			return (0);
 		if (line[count] == 'P')
 		{
+			game->person.x = count;
+			game->person.y = pos;
 			if (game->person.amount++ >= 1)
 				return (0);
 		}
@@ -45,7 +47,7 @@ char	*ft_map_check_line(t_game *game)
 {
 	char	*line;
 	char	*tmp;
-	int		counter;
+	int	counter;
 
 	tmp = NULL;
 	while (1)
@@ -59,7 +61,7 @@ char	*ft_map_check_line(t_game *game)
 		{
 			free(line);
 			free(tmp);
-			ft_error("Invalid map");
+			ft_error("Wrong map format");
 		}
 		tmp = join_strings(tmp, line);
 		free(line);
@@ -80,14 +82,13 @@ void	ft_map_check(t_game *game, char *map)
 	game->exit.amount = 0;
 	tmp = ft_map_check_line(game);
 	close(game->fd);
-	if (!tmp)
-		ft_error("Invalid map");
-	if (game->coin.amount == 0 || game->person.amount == 0
-		|| game->exit.amount == 0)
+	if (game->screen.width <= game->screen.height || game->coin.amount == 0
+		|| game->person.amount == 0 || game->exit.amount == 0)
 	{
 		free(tmp);
-		ft_error("Wrong number of elements in the map");
+		ft_error("Wrong map format");
 	}
+	ft_map_valid_path(game, tmp);
 	game->map = ft_split(tmp, '\n');
 	free(tmp);
 }
