@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/24 08:37:33 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/24 09:57:45 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@ int	ft_map_error(t_game *game, char *line, int pos)
 		{
 			game->person.x = count;
 			game->person.y = pos;
-			if (game->person.amount++ >= 1)
-				return (0);
+			game->person.amount++;
 		}
 		else if (line[count] == 'E')
-		{
-			if (game->exit.amount++ >= 1)
-				return (0);
-		}
+			game->exit.amount++;
 		else if (line[count] == 'C')
 			game->coin.amount++;
 		else if (line[count] != '1' && line[count] != '0')
+			return (0);
+		if (game->person.amount > 1 || game->exit.amount > 1)
 			return (0);
 		count++;
 	}
