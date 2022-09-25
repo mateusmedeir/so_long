@@ -6,18 +6,11 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:34:16 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/24 08:17:43 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 12:55:46 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_screen(t_game *game)
-{
-	game->screen.ref = mlx_new_window(game->mlx, game->screen.width
-			* game->x, game->screen.height * game->y, "so_long");
-	mlx_hook(game->screen.ref, 17, 0, ft_close, game);
-}
 
 void	ft_free_map(char **map)
 {
@@ -45,8 +38,15 @@ void	ft_error(char *strerror)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_close(t_game *game)
+void	ft_exit(t_game *game)
 {
 	ft_free_map(game->map);
 	exit(EXIT_SUCCESS);
+}
+
+int	ft_close(t_game *game)
+{
+	ft_putstr_fd("The game has been closed\n", 1);
+	ft_exit(game);
+	return (0);
 }

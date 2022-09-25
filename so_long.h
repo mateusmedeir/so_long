@@ -6,7 +6,7 @@
 /*   By: mateus <mmedeiro@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 09:27:58 by mateus            #+#    #+#             */
-/*   Updated: 2022/09/25 12:09:46 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 12:52:55 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void	ft_so_long(char *map);
 void	ft_free_map(char **map);
 void	ft_error_free(char **map, char *str, char *strerror);
 void	ft_error(char *strerror);
+void	ft_exit(t_game *game);
 int	ft_close(t_game *game);
-void	ft_screen(t_game *game);
 //image
 void	ft_images(t_game *game);
 void	ft_put_image(t_game *game, void *ref, int x, int y);
-//key
+//keys
 int	ft_key_move(t_game *game, int x, int y);
 int	ft_key_check(int key, t_game *game);
 int	ft_key(int key, void *param);

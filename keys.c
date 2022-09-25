@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:32:04 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 12:20:25 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 12:53:34 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_key(int key, void *param)
 	{
 		ft_printf("%d\n", ++counter);
 		ft_printf("You finished the game in %d moves!\n", counter);
-		ft_close(game);
+		ft_exit(game);
 	}
 	return (0);
 }

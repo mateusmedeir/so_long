@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:06 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 12:16:00 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 12:56:45 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	ft_so_long(char *map)
 	if (!game.mlx)
 		ft_error("Error starting mlx");
 	ft_images(&game);
-	ft_screen(&game);
+	game.screen.ref = mlx_new_window(game.mlx, game.screen.width
+			* game.x, game.screen.height * game.y, "so_long");
 	ft_map(&game);
+	mlx_hook(game.screen.ref, 17, 0, ft_close, &game);
 	mlx_key_hook(game.screen.ref, ft_key, &game);
 	mlx_loop(game.mlx);
 }
