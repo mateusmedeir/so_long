@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:29:30 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/08/30 09:29:31 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/25 07:14:15 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	ft_images(t_game *game)
 			"imgs/coin.xpm", &game->x, &game->y);
 	game->exit.ref = mlx_xpm_file_to_image(game->mlx,
 			"imgs/exit.xpm", &game->x, &game->y);
+	if (!game->person.ref || !game->wall || !game->floor
+		|| !game->coin.ref || !game->exit.ref)
+		ft_error_free(game->map, NULL, "Error loading images");
 	game->x = 50;
 	game->y = 50;
 }
