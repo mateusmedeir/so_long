@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map1.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 11:38:27 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 12:10:32 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_map_error(t_game *game, char *line, int pos)
 	{
 		if ((pos == 0 && line[count] != '1') || ((line[count + 1] == '\n'
 					|| !line[count + 1] || count == 0) && line[count] != '1'))
-			return (0);
+			return (-1);
 		if (line[count] == 'P')
 		{
 			game->person.x = count;
@@ -33,9 +33,9 @@ int	ft_map_error(t_game *game, char *line, int pos)
 		else if (line[count] == 'C')
 			game->coin.amount++;
 		else if (line[count] != '1' && line[count] != '0')
-			return (0);
+			return (-2);
 		if (game->person.amount > 1 || game->exit.amount > 1)
-			return (0);
+			return (-3);
 		count++;
 	}
 	return (count);
@@ -54,14 +54,12 @@ char	*ft_map_check_line(t_game *game)
 		if (line == NULL)
 			break ;
 		counter = ft_map_error(game, line, game->screen.height);
-		if (counter == 0 || (game->screen.height > 0
+		if (counter <= 0 || (game->screen.height > 0
 				&& counter != game->screen.width))
 		{
 			free(line);
 			free(tmp);
-			if (counter == 0)
-				ft_error("Invalid map");
-			ft_error("The map must be rectangular");
+			ft_map_check_line_error(game, counter);
 		}
 		tmp = join_strings(tmp, line);
 		free(line);
@@ -88,7 +86,7 @@ void	ft_map_check(t_game *game, char *map)
 		|| game->exit.amount == 0)
 	{
 		free(tmp);
-		ft_error("Wrong number of elements");
+		ft_error("Wrong number of elements in the map");
 	}
 	ft_map_valid_path(game, tmp);
 	game->map = ft_split(tmp, '\n');

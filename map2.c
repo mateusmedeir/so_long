@@ -1,5 +1,19 @@
 #include "so_long.h"
 
+void	ft_map_check_line_error(t_game *game, int counter)
+{
+	if (counter == -1)
+		ft_error("Map must be surrounded by walls");
+	else if (counter == -2)
+		ft_error("Map can only contain 0, 1, P, C and E");
+	else if (counter == -3)
+		ft_error("Map can only contain 1 start and 1 exit");
+	else if (game->screen.height > 0 && counter != game->screen.width)
+		ft_error("Map must be rectangular");
+	else
+		ft_error("Invalid map");
+}
+
 void	ft_map_path(t_game *game, int x, int y, char **map)
 {
 	if (map[y][x] == '1')

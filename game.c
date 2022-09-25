@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:06 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 11:06:11 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 12:16:00 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char *argv[])
 		if (ft_strncmp(argv[1] + (ft_strlen(argv[1]) - 4), ".ber", 5) == 0)
 			ft_so_long(argv[1]);
 		else
-			ft_error("Wrong map format");
+			ft_error("Map must be in .ber format");
 	}
 	else
 		ft_error("Wrong number of arguments");

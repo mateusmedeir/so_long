@@ -6,7 +6,7 @@
 /*   By: mateus <mmedeiro@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 09:27:58 by mateus            #+#    #+#             */
-/*   Updated: 2022/09/24 08:18:04 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 12:09:46 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ void	ft_put_image(t_game *game, void *ref, int x, int y);
 int	ft_key_move(t_game *game, int x, int y);
 int	ft_key_check(int key, t_game *game);
 int	ft_key(int key, void *param);
-//map_path
+//map2
+void	ft_map_check_line_error(t_game *game, int counter);
 void	ft_map_path(t_game *game, int x, int y, char **map);
 void	ft_map_valid_path(t_game *game, char *map);
 //map
