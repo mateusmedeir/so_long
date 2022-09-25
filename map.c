@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 11:24:10 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/25 11:38:27 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,9 @@ char	*ft_map_check_line(t_game *game)
 		{
 			free(line);
 			free(tmp);
-			ft_error("Invalid map");
+			if (counter == 0)
+				ft_error("Invalid map");
+			ft_error("The map must be rectangular");
 		}
 		tmp = join_strings(tmp, line);
 		free(line);
