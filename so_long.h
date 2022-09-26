@@ -6,7 +6,7 @@
 /*   By: mateus <mmedeiro@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 09:27:58 by mateus            #+#    #+#             */
-/*   Updated: 2022/09/25 12:52:55 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/26 07:36:26 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	ft_key(int key, void *param);
 //map2
 void	ft_map_check_line_error(t_game *game, int counter);
 void	ft_map_path(t_game *game, int x, int y, char **map);
+int	ft_map_check_last_line(char **map);
 void	ft_map_valid_path(t_game *game, char *map);
 //map
 int	ft_map_error(t_game *game, char *line, int pos);

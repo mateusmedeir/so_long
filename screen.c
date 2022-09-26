@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:34:16 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 12:55:46 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/26 07:38:30 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_error_free(char **map, char *str, char *strerror)
 
 void	ft_error(char *strerror)
 {
-	ft_putstr_fd("ERROR\n", 2);
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(strerror, 2);
 	ft_putstr_fd("\n", 2);
 	exit(EXIT_FAILURE);

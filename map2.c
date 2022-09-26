@@ -33,6 +33,25 @@ void	ft_map_path(t_game *game, int x, int y, char **map)
 		ft_map_path(game, x, y + 1, map);
 }
 
+int	ft_map_check_last_line(char **map)
+{
+	int	pos;
+	int	counter;
+
+	pos = 0;
+	while (map[pos])
+		pos++;
+	pos--;
+	counter = 0;
+	while (map[pos][counter])
+	{
+		if (map[pos][counter] != '1')
+			return (-1);
+		counter++;
+	}
+	return (0);
+}
+
 void	ft_map_valid_path(t_game *game, char *map)
 {
 	int	pos;
@@ -41,6 +60,8 @@ void	ft_map_valid_path(t_game *game, char *map)
 
 	game->exit_path = 0;
 	tmp = ft_split(map, '\n');
+	if (ft_map_check_last_line(tmp) == -1)
+		ft_error_free(tmp, map, "Map must be surrounded by walls");
 	ft_map_path(game, game->person.x, game->person.y, tmp);
 	if (game->exit_path <= 0)
 		ft_error_free(tmp, map, "No valid path on map");
