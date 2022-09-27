@@ -1,5 +1,15 @@
 #include "so_long.h"
 
+void	ft_free_map(char **map)
+{
+	int	counter;
+
+	counter = 0;
+	while (map[counter])
+		free(map[counter++]);
+	free(map);
+}
+
 void	ft_map_check_line_error(t_game *game, int counter)
 {
 	if (counter == -1)

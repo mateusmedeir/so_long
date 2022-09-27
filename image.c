@@ -6,11 +6,25 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:29:30 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 07:14:15 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/27 07:11:19 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	ft_free_images(t_game *game)
+{
+	if (game->person.ref)
+		mlx_destroy_image(game->mlx, game->person.ref);
+	if (game->wall)
+		mlx_destroy_image(game->mlx, game->wall);
+	if (game->floor)
+		mlx_destroy_image(game->mlx, game->floor);
+	if (game->coin.ref)
+		mlx_destroy_image(game->mlx, game->coin.ref);
+	if (game->exit.ref)
+		mlx_destroy_image(game->mlx, game->exit.ref);
+}
 
 void	ft_images(t_game *game)
 {
@@ -26,7 +40,11 @@ void	ft_images(t_game *game)
 			"imgs/exit.xpm", &game->x, &game->y);
 	if (!game->person.ref || !game->wall || !game->floor
 		|| !game->coin.ref || !game->exit.ref)
+	{
+		ft_free_images(game);
+		mlx_destroy_window(game->mlx, game->screen.ref);
 		ft_error_free(game->map, NULL, "Error loading images");
+	}
 	game->x = 50;
 	game->y = 50;
 }

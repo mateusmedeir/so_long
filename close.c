@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   screen.c                                           :+:      :+:    :+:   */
+/*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:34:16 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/26 07:38:30 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/27 07:11:23 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void	ft_free_map(char **map)
-{
-	int	counter;
-
-	counter = 0;
-	while (map[counter])
-		free(map[counter++]);
-	free(map);
-}
 
 void	ft_error_free(char **map, char *str, char *strerror)
 {
@@ -41,6 +31,8 @@ void	ft_error(char *strerror)
 void	ft_exit(t_game *game)
 {
 	ft_free_map(game->map);
+	ft_free_images(game);
+	mlx_destroy_window(game->mlx, game->screen.ref);
 	exit(EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mateus <mmedeiro@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 09:27:58 by mateus            #+#    #+#             */
-/*   Updated: 2022/09/26 07:36:26 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/27 06:35:55 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	ft_close(t_game *game);
 //image
 void	ft_images(t_game *game);
 void	ft_put_image(t_game *game, void *ref, int x, int y);
+void	ft_free_images(t_game *game);
 //keys
 int	ft_key_move(t_game *game, int x, int y);
 int	ft_key_check(int key, t_game *game);
