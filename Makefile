@@ -32,16 +32,14 @@ $(LIBFT):
 
 clean:
 			$(RM) $(OBJS)
+			@make clean -C libraries/mlx
 			@make clean -C libraries/libft
 
 fclean:		clean
 			$(RM) $(NAME)
-			@make clean -C libraries/mlx
+			@make fclean -C libraries/mlx
 			@make fclean -C libraries/libft
 
 re:			fclean all
 
-valgrind:	re
-			@valgrind --leak-check=full --suppressions=val.log ./$(NAME) maps/map.ber
-
-.PHONY:		all clean fclean re valgrind
+.PHONY:		all clean fclean re
