@@ -6,7 +6,7 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/09/25 12:10:32 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/28 10:28:21 by mmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_map_check_line(t_game *game)
 {
 	char	*line;
 	char	*tmp;
-	int	counter;
+	int		counter;
 
 	tmp = NULL;
 	while (1)

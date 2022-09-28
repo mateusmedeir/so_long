@@ -6,7 +6,7 @@
 /*   By: mateus <mmedeiro@student.42.rio>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 09:27:58 by mateus            #+#    #+#             */
-/*   Updated: 2022/09/27 06:35:55 by mateus           ###   ########.fr       */
+/*   Updated: 2022/09/28 10:29:30 by mmedeiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@
 typedef struct s_screen
 {
 	void	*ref;
-	int	width;
-	int	height;
+	int		width;
+	int		height;
 }				t_screen;
 
 typedef struct s_person
 {
 	void	*ref;
-	int	amount;
-	int	x;
-	int	y;
+	int		amount;
+	int		x;
+	int		y;
 }				t_person;
 
 typedef struct s_block
 {
 	void	*ref;
-	int	amount;
+	int		amount;
 }				t_block;
 
 typedef struct s_game
@@ -51,10 +51,10 @@ typedef struct s_game
 	t_block		coin;
 	t_block		exit;
 	char		**map;
-	int		fd;
-	int		x;
-	int		y;
-	int		exit_path;
+	int			fd;
+	int			x;
+	int			y;
+	int			exit_path;
 }				t_game;
 
 //game
@@ -64,23 +64,23 @@ void	ft_free_map(char **map);
 void	ft_error_free(char **map, char *str, char *strerror);
 void	ft_error(char *strerror);
 void	ft_exit(t_game *game);
-int	ft_close(t_game *game);
+int		ft_close(t_game *game);
 //image
 void	ft_images(t_game *game);
 void	ft_put_image(t_game *game, void *ref, int x, int y);
 void	ft_free_images(t_game *game);
 //keys
-int	ft_key_move(t_game *game, int x, int y);
-int	ft_key_check(int key, t_game *game);
-int	ft_key(int key, void *param);
+int		ft_key_move(t_game *game, int x, int y);
+int		ft_key_check(int key, t_game *game);
+int		ft_key(int key, void *param);
 //map2
 void	ft_map_check_line_error(t_game *game, int counter);
 void	ft_map_path(t_game *game, int x, int y, char **map);
-int	ft_map_check_last_line(char **map);
+int		ft_map_check_last_line(char **map);
 void	ft_map_valid_path(t_game *game, char *map);
 //map
-int	ft_map_error(t_game *game, char *line, int pos);
-int	ft_map_error(t_game *game, char *line, int pos);
+int		ft_map_error(t_game *game, char *line, int pos);
+int		ft_map_error(t_game *game, char *line, int pos);
 char	*ft_map_check_line(t_game *game);
 void	ft_map_check(t_game *game, char *map);
 void	ft_map(t_game *game);

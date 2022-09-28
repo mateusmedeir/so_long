@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map2.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/28 10:26:39 by mmedeiro          #+#    #+#             */
+/*   Updated: 2022/09/28 10:28:32 by mmedeiro         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	ft_free_map(char **map)
@@ -64,8 +76,8 @@ int	ft_map_check_last_line(char **map)
 
 void	ft_map_valid_path(t_game *game, char *map)
 {
-	int	pos;
-	int	counter;
+	int		pos;
+	int		counter;
 	char	**tmp;
 
 	game->exit_path = 0;
