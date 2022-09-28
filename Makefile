@@ -1,28 +1,28 @@
-SRCS	= game.c close.c image.c keys.c map1.c map2.c
+SRCS		= game.c close.c image.c keys.c map1.c map2.c
 
 SRCS_GNL	= libraries/gnl/get_next_line.c libraries/gnl/get_next_line_utils.c
 
 OBJS		= $(SRCS:.c=.o)
 
-CC		= cc
-RM		= rm -f
+CC			= cc
+RM			= rm -f
 FLAGS1		= -Wall -Wextra -Werror
 FLAGS2		= -I ./libraries/mlx -L ./libraries/mlx -lmlx -L ./libraries/libft -lft -framework OpenGl -framework Appkit
-O		= -o
-C		= -c
+O			= -o
+C			= -c
 
 NAME		= so_long
 
-MLX		= libmlx.a
+MLX			= libmlx.a
 
 LIBFT		= libft.a
 
-all:		$(MLX) $(LIBFT) $(NAME)
+all:		$(NAME)
 
 .c.o:		$(SRCS)
 			$(CC) $(FLAGS1) $(C) $< $(O) $(<:.c=.o)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(MLX) $(LIBFT) $(OBJS)
 			$(CC) $(FLAGS1) $(FLAGS2) $(OBJS) $(SRCS_GNL) -D BUFFER_SIZE=42 $(O) $(NAME)
 
 $(MLX):
