@@ -6,14 +6,13 @@
 /*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 14:50:12 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/06/22 14:50:21 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2022/09/30 10:56:23 by mateus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 
