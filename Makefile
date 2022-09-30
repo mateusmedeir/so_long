@@ -13,16 +13,16 @@ C			= -c
 
 NAME		= so_long
 
-MLX			= libmlx.a
+MLX			= libraries/mlx/libmlx.a
 
-LIBFT		= libft.a
+LIBFT		= libraries/libft/libft.a
 
-all:		$(NAME)
+all:		$(MLX) $(LIBFT) $(NAME)
 
 .c.o:		$(SRCS)
 			$(CC) $(FLAGS1) $(C) $< $(O) $(<:.c=.o)
 
-$(NAME):	$(MLX) $(LIBFT) $(OBJS)
+$(NAME):	$(OBJS)
 			$(CC) $(FLAGS1) $(FLAGS2) $(OBJS) $(SRCS_GNL) -D BUFFER_SIZE=42 $(O) $(NAME)
 
 $(MLX):
