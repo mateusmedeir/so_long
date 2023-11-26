@@ -13,10 +13,10 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "libraries/mlx/mlx.h"
-# include "libraries/gnl/get_next_line.h"
-# include "libraries/libft/libft.h"
-# include "libraries/libft/ft_printf/ft_printf.h"
+# include "libs/mlx-linux/mlx.h"
+# include "libs/gnl/get_next_line.h"
+# include "libs/libft/libft.h"
+# include "libs/libft/ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <fcntl.h>
 

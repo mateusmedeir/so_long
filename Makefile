@@ -1,44 +1,51 @@
-SRCS		= game.c close.c image.c keys.c map1.c map2.c
+NAME		= so_long
 
-SRCS_GNL	= libraries/gnl/get_next_line.c libraries/gnl/get_next_line_utils.c
+SRCS		= game.c  \
+			  close.c \
+			  image.c \
+			  keys.c  \
+			  map1.c  \
+			  map2.c
+
+SRCS_GNL	= $(LIBS_PATH)/gnl/get_next_line.c $(LIBS_PATH)/gnl/get_next_line_utils.c
 
 OBJS		= $(SRCS:.c=.o)
 
+LIBS_PATH	= libs
+LIBFT_PATH	= $(LIBS_PATH)/libft
+MLX_PATH	= $(LIBS_PATH)/mlx-linux
+
 CC			= cc
-RM			= rm -f
-FLAGS1		= -Wall -Wextra -Werror
-FLAGS2		= -I ./libraries/mlx -L ./libraries/mlx -lmlx -L ./libraries/libft -lft -framework OpenGl -framework Appkit
-O			= -o
-C			= -c
+RM			= rm
+FLAGS		= -Wall -Wextra -Werror
+LIBS		= -I $(MLX_PATH) -L $(MLX_PATH) -lmlx_linux -L $(LIBFT_PATH) -lft
+E_LIBS		= -lXext -lX11 -lm -lz
 
-NAME		= so_long
+MLX			= $(MLX_PATH)/libmlx.a
 
-MLX			= libraries/mlx/libmlx.a
+LIBFT		= $(LIBFT_PATH)/libft.a
 
-LIBFT		= libraries/libft/libft.a
+all:		$(NAME)
 
-all:		$(MLX) $(LIBFT) $(NAME)
+.c.o:
+			$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
-.c.o:		$(SRCS)
-			$(CC) $(FLAGS1) $(C) $< $(O) $(<:.c=.o)
-
-$(NAME):	$(OBJS)
-			$(CC) $(FLAGS1) $(FLAGS2) $(OBJS) $(SRCS_GNL) -D BUFFER_SIZE=42 $(O) $(NAME)
+$(NAME):	$(OBJS) $(MLX) $(LIBFT)
+			$(CC) $(FLAGS) $(LIBS) $(E_LIBS) $(OBJS) $(SRCS_GNL) -D BUFFER_SIZE=42 -o $(NAME)
 
 $(MLX):
-			@make -C libraries/mlx
+			@make -C $(MLX_PATH)
 $(LIBFT):
-			@make -C libraries/libft
+			@make -C $(LIBFT_PATH)
 
 clean:
-			$(RM) $(OBJS)
-			@make clean -C libraries/mlx
-			@make clean -C libraries/libft
+			$(RM) -f $(OBJS)
+			@make clean -C $(MLX_PATH)
+			@make clean -C $(LIBFT_PATH)
 
 fclean:		clean
-			$(RM) $(NAME)
-			@make fclean -C libraries/mlx
-			@make fclean -C libraries/libft
+			$(RM) -f $(NAME)
+			$(RM) -f $(LIBFT_PATH)/libft.a
 
 re:			fclean all
 
