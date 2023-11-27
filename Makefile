@@ -21,16 +21,16 @@ MLX_PATH	= $(LIBS_PATH)/mlx-linux
 CC			= cc
 RM			= rm
 FLAGS		= -Wall -Wextra -Werror
-LIBS		= -I $(MLX_PATH) -L $(MLX_PATH) -lmlx_linux -L $(LIBFT_PATH) -lft
+LIBS		= -I $(MLX_PATH) -L $(MLX_PATH) -lmlx_Linux -L $(LIBFT_PATH) -lft
 E_LIBS		= -lXext -lX11 -lm -lz
 
 all:		$(NAME)
 
 .c.o:
-			$(CC) $(FLAGS) $(LIBS) $(E_LIBS) -c $< -o $(<:.c=.o)
+			$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS) $(MLX) $(LIBFT)
-			$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+			$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(LIBS) $(E_LIBS)
 
 $(MLX):
 			@make -C $(MLX_PATH)

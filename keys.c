@@ -30,15 +30,15 @@ int	ft_key_move(t_game *game, int x, int y)
 
 int	ft_key_check(int key, t_game *game)
 {
-	if (key == 53)
+	if (key == KEY_ESC)
 		return (-1);
-	else if (key == 0)
+	else if (key == KEY_A)
 		return (ft_key_move(game, game->person.x - 1, game->person.y));
-	else if (key == 2)
+	else if (key == KEY_D)
 		return (ft_key_move(game, game->person.x + 1, game->person.y));
-	else if (key == 13)
+	else if (key == KEY_W)
 		return (ft_key_move(game, game->person.x, game->person.y - 1));
-	else if (key == 1)
+	else if (key == KEY_S)
 		return (ft_key_move(game, game->person.x, game->person.y + 1));
 	return (0);
 }
