@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 11:59:21 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/05/24 16:15:30 by mmedeiro         ###   ########.fr       */
+/*   Created: 2023/11/07 09:38:56 by matlopes          #+#    #+#             */
+/*   Updated: 2023/11/07 09:38:57 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,5 @@ void	ft_bzero(void *s, size_t n)
 	pointer = (char *)s;
 	counter = 0;
 	while (counter < n)
-	{
-		pointer[counter] = '\0';
-		counter++;
-	}
+		pointer[counter++] = '\0';
 }

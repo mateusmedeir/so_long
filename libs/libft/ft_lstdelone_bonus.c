@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 12:30:50 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/05/30 12:17:05 by mmedeiro         ###   ########.fr       */
+/*   Created: 2023/11/07 09:40:15 by matlopes          #+#    #+#             */
+/*   Updated: 2023/11/07 09:40:16 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

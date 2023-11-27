@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mateus <mmedeiro@student.42.rio>           +#+  +:+       +#+        */
+/*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/18 09:27:58 by mateus            #+#    #+#             */
-/*   Updated: 2022/09/28 10:30:40 by mmedeiro         ###   ########.fr       */
+/*   Updated: 2023/11/27 12:39:31 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define SO_LONG_H
 
 # include "libs/mlx-linux/mlx.h"
-# include "libs/gnl/get_next_line.h"
 # include "libs/libft/libft.h"
-# include "libs/libft/ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <fcntl.h>
 

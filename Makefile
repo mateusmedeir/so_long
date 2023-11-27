@@ -11,6 +11,9 @@ SRCS_GNL	= $(LIBS_PATH)/gnl/get_next_line.c $(LIBS_PATH)/gnl/get_next_line_utils
 
 OBJS		= $(SRCS:.c=.o)
 
+MLX			= $(MLX_PATH)/libmlx.a
+LIBFT		= $(LIBFT_PATH)/libft.a
+
 LIBS_PATH	= libs
 LIBFT_PATH	= $(LIBS_PATH)/libft
 MLX_PATH	= $(LIBS_PATH)/mlx-linux
@@ -21,17 +24,13 @@ FLAGS		= -Wall -Wextra -Werror
 LIBS		= -I $(MLX_PATH) -L $(MLX_PATH) -lmlx_linux -L $(LIBFT_PATH) -lft
 E_LIBS		= -lXext -lX11 -lm -lz
 
-MLX			= $(MLX_PATH)/libmlx.a
-
-LIBFT		= $(LIBFT_PATH)/libft.a
-
 all:		$(NAME)
 
 .c.o:
-			$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
+			$(CC) $(FLAGS) $(LIBS) $(E_LIBS) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS) $(MLX) $(LIBFT)
-			$(CC) $(FLAGS) $(LIBS) $(E_LIBS) $(OBJS) $(SRCS_GNL) -D BUFFER_SIZE=42 -o $(NAME)
+			$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 $(MLX):
 			@make -C $(MLX_PATH)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/26 12:29:55 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/05/26 12:29:56 by mmedeiro         ###   ########.fr       */
+/*   Created: 2023/11/07 09:40:03 by matlopes          #+#    #+#             */
+/*   Updated: 2023/11/07 09:40:06 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

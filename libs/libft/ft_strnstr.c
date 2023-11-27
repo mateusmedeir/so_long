@@ -3,43 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 12:02:43 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/05/30 12:59:48 by mmedeiro         ###   ########.fr       */
+/*   Created: 2023/11/07 09:42:39 by matlopes          #+#    #+#             */
+/*   Updated: 2023/11/07 15:00:08 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	verify(const char *haystack, const char *needle, size_t len)
-{
-	while (*needle != '\0')
-	{
-		if (*haystack != *needle || len <= 0)
-			return (0);
-		haystack++;
-		needle++;
-		len--;
-	}
-	return (1);
-}
-
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*pointer;
+	size_t	needle_counter;
 
-	if (!ft_strlen(needle))
+	needle_counter = ft_strlen(needle);
+	if (!needle_counter)
 		return ((char *)haystack);
-	while (*haystack != '\0' && len > 0)
+	while (*haystack != '\0' && len-- >= needle_counter)
 	{
-		if (verify(haystack, needle, len))
-		{
-			pointer = (char *)haystack;
-			return (pointer);
-		}
+		if (!ft_strncmp(haystack, needle, needle_counter))
+			return ((char *)haystack);
 		haystack++;
-		len--;
 	}
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmedeiro <mmedeiro@student.42.rio>         +#+  +:+       +#+        */
+/*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 12:01:56 by mmedeiro          #+#    #+#             */
-/*   Updated: 2022/05/24 17:32:41 by mmedeiro         ###   ########.fr       */
+/*   Created: 2023/11/07 09:41:47 by matlopes          #+#    #+#             */
+/*   Updated: 2023/11/22 12:24:07 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@ char	*ft_strchr(const char *s, int c)
 	char	*pointer;
 
 	pointer = (char *)s;
-	while (*pointer != '\0')
-	{
-		if (*pointer == c)
-			return ((char *)pointer);
-		else
-			pointer++;
-	}
+	while (*pointer && *pointer != c)
+		pointer++;
 	if (*pointer == c)
 		return ((char *)pointer);
 	return (NULL);
