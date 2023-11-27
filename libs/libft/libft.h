@@ -6,7 +6,7 @@
 /*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:57:18 by matlopes          #+#    #+#             */
-/*   Updated: 2023/11/27 12:34:20 by matlopes         ###   ########.fr       */
+/*   Updated: 2023/11/27 14:07:36 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_putnbr_fd(int n, int fd);
 size_t	ft_putchar(char c);
 size_t	ft_putstr(char *str);
 size_t	ft_intlen(int nbr);
+char	*ft_strjoin_new(char *old, char *str);
 int		ft_printf(const char *str, ...);
 char	*get_next_line(int fd);
 t_list	*ft_lstnew(void *content);

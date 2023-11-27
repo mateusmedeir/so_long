@@ -6,40 +6,11 @@
 /*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:25:58 by mmedeiro          #+#    #+#             */
-/*   Updated: 2023/11/27 12:42:57 by matlopes         ###   ########.fr       */
+/*   Updated: 2023/11/27 14:09:29 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static char	*ft_strjoin_free(char *s1, char *s2)
-{
-	char	*pointer;
-	int		counter;
-
-	counter = 0;
-	pointer = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!pointer)
-		return (NULL);
-	if (s1)
-	{
-		while (s1[counter])
-		{
-			pointer[counter] = s1[counter];
-			counter++;
-		}
-		free(s1);
-	}
-	while (*s2)
-		pointer[counter++] = *s2++;
-	pointer[counter] = '\0';
-	if (!*pointer)
-	{
-		free(pointer);
-		return (NULL);
-	}
-	return (pointer);
-}
 
 int	ft_map_error(t_game *game, char *line, int pos)
 {
@@ -90,7 +61,7 @@ char	*ft_map_check_line(t_game *game)
 			free(tmp);
 			ft_map_check_line_error(game, counter);
 		}
-		tmp = ft_strjoin_free(tmp, line);
+		tmp = ft_strjoin_new(tmp, line);
 		free(line);
 		game->screen.width = counter;
 		game->screen.height++;
@@ -153,4 +124,4 @@ void	ft_map(t_game *game)
 	pos = 0;
 	while (game->map[pos])
 		ft_map_block(game, pos++);
-}	
+}

@@ -6,7 +6,7 @@
 /*   By: matlopes <matlopes@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:41:23 by matlopes          #+#    #+#             */
-/*   Updated: 2023/11/27 12:42:38 by matlopes         ###   ########.fr       */
+/*   Updated: 2023/11/27 14:09:58 by matlopes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,35 +66,6 @@ static char	*ft_cat_res(char *res)
 	return (new_res);
 }
 
-static char	*ft_strjoin_free(char *s1, char *s2)
-{
-	char	*pointer;
-	int		counter;
-
-	counter = 0;
-	pointer = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (!pointer)
-		return (NULL);
-	if (s1)
-	{
-		while (s1[counter])
-		{
-			pointer[counter] = s1[counter];
-			counter++;
-		}
-		free(s1);
-	}
-	while (*s2)
-		pointer[counter++] = *s2++;
-	pointer[counter] = '\0';
-	if (!*pointer)
-	{
-		free(pointer);
-		return (NULL);
-	}
-	return (pointer);
-}
-
 static char	*ft_read_file(int fd)
 {
 	int			counter;
@@ -114,7 +85,7 @@ static char	*ft_read_file(int fd)
 			return (NULL);
 		}
 		line[counter] = '\0';
-		res = ft_strjoin_free(res, line);
+		res = ft_strjoin_new(res, line);
 	}
 	free(line);
 	if (!res)
