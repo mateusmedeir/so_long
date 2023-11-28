@@ -7,8 +7,6 @@ SRCS		= game.c  \
 			  map1.c  \
 			  map2.c
 
-SRCS_GNL	= $(LIBS_PATH)/gnl/get_next_line.c $(LIBS_PATH)/gnl/get_next_line_utils.c
-
 OBJS		= $(SRCS:.c=.o)
 
 MLX			= $(MLX_PATH)/libmlx.a
